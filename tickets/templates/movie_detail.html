@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ object.title }} {% endblock %}
+
+{% block content %}
+    <div class="content">
+    <h3><b>{{ object.title }}</b></h3>
+    {% if object.poster %}
+        <img class="poster" src="{{ object.poster.url }}"><br>
+    {% endif %}
+    <div class="story"><h5>{{ object.storyline }}</h5></div>
+    <div class="details">
+            Runtime: {{ object.runtime }} min.<br>
+            Genre: {{ object.genre }}<br>
+            Cast: {{ object.cast }}<br>
+            Director: {{ object.director }}<br>
+            Release Date: {{ object.release_date }}<br><br>
+    </div>
+    Available Screenings: <br>
+        {% for screening in screenings %}
+        <a class="btn btn-secondary" href="{% url 'screening_detail' screening.pk %}">
+            {{ screening.screening_time|date:"D d m Y" }} {{ screening.screening_time|time:"H:i" }}</a>
+        {% endfor %}
+        <br>
+        <a class="btn btn-primary" href="{% url 'screening_create' object.pk %}">Add Screening</a>
+
+
+
+
+</div>
+{% endblock %}

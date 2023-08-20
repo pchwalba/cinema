@@ -1,0 +1,57 @@
+.navbar {
+    min-height: 100px;
+    font-size: 25px;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.navbar-brand > img {
+    margin-left: 70px;
+    height: 150px;
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f0f0f0;
+	color: #393939;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', serif, ;
+}
+
+.form {
+  position: sticky;
+  left: 10px;
+  font-family: 'Source Sans Pro', sans-serf;
+	backgroud-color: #e6efe8
+	color: #393939;
+  max-width: 35%;
+}
+
+.details {
+
+}
+
+.content {
+    margin-left: 80px;
+    margin-top: 30px;
+    max-width: 35%;
+}
+
+.container {
+    max-width: 50%;
+    position: sticky;
+
+}
+
+.btn-secondary {
+    margin-bottom: 5px;
+}
+
+.poster {
+    margin-bottom: 15px;
+}
+

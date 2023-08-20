@@ -1,0 +1,14 @@
+{
+  "status": "done",
+  "assets": {
+    "main.js": {
+      "name": "main.js",
+      "path": "C:\\django\\cinema\\tickets\\static\\seatpicker\\src\\main.js"
+    }
+  },
+  "chunks": {
+    "main": [
+      "main.js"
+    ]
+  }
+}

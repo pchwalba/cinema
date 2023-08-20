@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row"><center>{{ object.screening.movie.title }}</center></div>
+    <div class="row">
+        <div class="col">{{ object.screening.screening_time|date:"D d m Y" }}</div>
+        <div class="col">{{ object.screening.screening_time|time:"H:i" }}</div>
+        <div class="col">Seat: {{ object.seat }}</div></div>
+    <div class="row">
+        <div class="col">Name: {{ object.name }}</div><div class="col">E-mail: {{ object.email }}</div><div class="col">Phone {{ object.phone_number }}</div>
+        </div>
+    <div class="row"><div class="col">Price: {{ object.screening.price }}</div></div>
+    </div>
+
+<style>
+.row {
+  background: lightgrey;
+  border: 1px solid grey;
+}
+
+.border {
+  border-right: 1px solid black;
+}
+</style>
+{% endblock %}

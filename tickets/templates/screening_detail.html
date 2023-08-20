@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ object.movie }} {% endblock %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+    <h2>Buy ticket for : {{ object.movie.title }}</h2>
+    <span>{{ object.screening_time|date:"D d m Y" }} : {{ object.screening_time|time:"H:i" }}</span>
+
+    <div id="root"></div>
+    <script>
+    window.__API_URL__= '{{ object.id }}';
+    window.react_mount = document.getElementById('root');
+    </script>
+    {% render_bundle 'main' %}
+
+{% endblock %}

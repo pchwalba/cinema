@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <h2>Upcoming Movies</h2>
+    </div>
+  </div>
+</div>
+    <div class="container">
+        {% for movie in object_list %}
+        <div class="row">
+            <div class="col col-sm-5">
+                {% if movie.poster %}
+            <img src="{{ movie.poster.url }}">
+                {% else %}
+                <img src="{% static 'no_poster.jpg' %}">
+                {% endif %}
+            </div>
+            <div class="col">
+                <div class="row">
+                   <a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a>
+                </div>
+                <div class="row">
+                    {{ movie.genre }} | {{ movie.runtime }} mins
+                </div>
+                <div class="row">
+                    {% for screening in movie.screening_set.all %}
+                     <a class="btn btn-secondary" href="{% url 'screening_detail' screening.pk %}">
+            {{ screening.screening_time|date:"D d m Y" }} {{ screening.screening_time|time:"H:i" }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+
+{% endblock %}
