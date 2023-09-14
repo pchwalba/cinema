@@ -1,17 +1,16 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework import viewsets
-from django.shortcuts import get_object_or_404
 from .serializers import TicketSerializer, ScreeningSerializer, BookedSeats
 from .models import Ticket
-from django.shortcuts import HttpResponseRedirect
+
 
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
 
     def list(self, request, **kwargs):
+        """get the list of occupied seats for chosen screening."""
         sc_pk = self.kwargs.get('sc_pk')
         queryset = Ticket.objects.filter(screening__pk=sc_pk)
         serializer = BookedSeats(queryset)
@@ -30,4 +29,3 @@ class TicketViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         instance = serializer.save()
         return instance
-

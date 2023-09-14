@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import CreateMovie, UpdateMovie, MovieDetail, CreateScreening, ScreeningDetail, MovieList, TicketLatest, SearchView, MovieListAll
+from .views import (CreateMovie, UpdateMovie, MovieDetail, CreateScreening, ScreeningDetail,
+                    MovieList, TicketLatest, SearchView, MovieListAll)
 from . import api_views
 from rest_framework.routers import DefaultRouter
 from django.conf import settings

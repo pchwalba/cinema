@@ -1,8 +1,7 @@
-from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Fieldset, Div
-from crispy_bootstrap5.bootstrap5 import FloatingField
+from django import forms
+
 from .models import Movie, Ticket, Screening
 
 
@@ -19,7 +18,6 @@ class InstanceForm(forms.ModelForm):
         self.helper.add_input(Submit("", button_title))
 
 
-
 class MovieForm(InstanceForm):
     class Meta:
         model = Movie
@@ -32,7 +30,7 @@ class MovieForm(InstanceForm):
 class ScreeningForm(InstanceForm):
     class Meta:
         model = Screening
-        exclude = ("movie", )
+        exclude = ("movie",)
         widgets = {
             "screening_time": forms.TextInput(attrs={'type': 'datetime-local'}),
         }
@@ -41,7 +39,7 @@ class ScreeningForm(InstanceForm):
 class TicketForm(InstanceForm):
     class Meta:
         model = Ticket
-        exclude = ("screening", )
+        exclude = ("screening",)
 
 
 class SearchForm(forms.Form):

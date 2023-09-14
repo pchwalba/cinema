@@ -2,16 +2,13 @@ from rest_framework import serializers
 from .models import Ticket, Screening
 
 
-
 class ScreeningSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Screening
         fields = ['movie', 'screening_time', 'price']
 
 
 class TicketSerializer(serializers.ModelSerializer):
-
     screening = ScreeningSerializer
 
     class Meta:
@@ -26,10 +23,9 @@ class TicketSerializer(serializers.ModelSerializer):
 
 class BookedSeats(serializers.BaseSerializer):
 
-
     def to_representation(self, instance):
         booked = [ticket.seat for ticket in instance]
 
-        return{
+        return {
             'booked': booked
         }

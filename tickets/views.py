@@ -1,18 +1,19 @@
 import datetime
+from io import BytesIO
+
+from PIL import Image
+from django.contrib.messages.views import SuccessMessageMixin
+from django.core.files.images import ImageFile
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.shortcuts import render
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.decorators import user_passes_test, login_required
-from django.core.files.images import ImageFile
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from django.views.generic import DetailView
-from django.views.generic.list import ListView
 from django.views import View
-from .forms import MovieForm, ScreeningForm, TicketForm, SearchForm
+from django.views.generic import DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.list import ListView
+
+from .forms import MovieForm, ScreeningForm, SearchForm
 from .models import Movie, Screening, Ticket
-from PIL import Image
-from io import BytesIO
 
 
 class MovieList(ListView):
@@ -83,7 +84,6 @@ class CreateScreening(SuccessMessageMixin, CreateView):
     success_message = "Screening created successfully"
 
     def form_valid(self, form):
-
         self.object = form.save(commit=False)
         self.object.movie = Movie.objects.get(pk=self.kwargs.get('movie_pk'))
         self.object.save()
